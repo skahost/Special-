@@ -1,4 +1,4 @@
-/* Nebula custom addition: modules, kill button & sidebar tweaks — styling */
+/* SK Host custom addition: modules, kill button & sidebar tweaks — styling */
 
 /* Kill button (red, forced termination) */
 .nebula-kill-button {
@@ -77,6 +77,13 @@
   font-size: 14px;
   line-height: 1.5;
   opacity: 0.85;
+  margin-bottom: 10px;
+}
+
+.nebula-module-note {
+  font-size: 12px;
+  line-height: 1.5;
+  opacity: 0.6;
   margin-bottom: 18px;
 }
 

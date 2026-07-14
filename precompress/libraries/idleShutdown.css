@@ -1,4 +1,21 @@
-/* Nebula custom addition: Idle Server Shutdown (Auto-Sleep) — styling */
+/* SK Host custom addition: Idle Server Shutdown (Auto-Sleep) & player counts — styling */
+
+.nebula-card-players {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 8px;
+  padding-top: 8px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  font-size: 12px;
+  font-weight: 600;
+  color: #cdd3ff;
+}
+
+.nebula-card-players i {
+  font-size: 13px;
+  opacity: 0.85;
+}
 
 a[href^="/server/"][nebula-sleeping="true"] {
   position: relative;

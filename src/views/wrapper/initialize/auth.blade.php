@@ -5,6 +5,6 @@
     </svg>
   </div>
   <div class="initialize-notif-text">
-    <p><b>Nebula has not been set up yet!</b> Login to enable (and configure) Nebula on your Pterodactyl panel.</p>
+    <p><b>SK Host has not been set up yet!</b> Login to enable (and configure) SK Host on your Pterodactyl panel.</p>
   </div>
 </div>

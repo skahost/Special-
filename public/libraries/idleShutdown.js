@@ -1,5 +1,5 @@
-/* Nebula custom addition: Idle Server Shutdown (Auto-Sleep) — frontend */
-console.log("nebula#~ idleShutdown.js")
+/* SK Host custom addition: Idle Server Shutdown (Auto-Sleep) & player counts — frontend */
+console.log("skhost#~ idleShutdown.js")
 
 function nebulaIdleConfig() {
   return (window.NebulaConfig && window.NebulaConfig.idleShutdown) || { enabled: false, sleeping: [] }
@@ -70,9 +70,44 @@ function nebulaRefreshSleepingBanner() {
   }
 }
 
+/* Dashboard: show the active player count below each server card. */
+function nebulaPlayersConfig() {
+  return (window.NebulaConfig && window.NebulaConfig.players) || { enabled: false, counts: {} }
+}
+
+function nebulaRefreshPlayerCounts() {
+  var cfg = nebulaPlayersConfig()
+  if (!cfg.enabled) return
+  if (typeof nebulaCurrentPage === "function" && nebulaCurrentPage() !== "home") return
+
+  var counts = cfg.counts || {}
+  document.querySelectorAll('a[href^="/server/"]').forEach(function (card) {
+    var match = card.getAttribute("href").match(/\/server\/([^/]+)/)
+    if (!match) return
+    var id = match[1]
+
+    if (!Object.prototype.hasOwnProperty.call(counts, id)) {
+      var stale = card.querySelector(".nebula-card-players")
+      if (stale) stale.remove()
+      return
+    }
+
+    var count = counts[id]
+    var label = card.querySelector(".nebula-card-players")
+    if (!label) {
+      label = document.createElement("div")
+      label.className = "nebula-card-players"
+      card.appendChild(label)
+    }
+    label.innerHTML =
+      '<i class="bi bi-people-fill"></i> ' + count + (count === 1 ? " player online" : " players online")
+  })
+}
+
 function nebulaIdleRefresh() {
   try { nebulaRefreshSleepingCards() } catch (e) {}
   try { nebulaRefreshSleepingBanner() } catch (e) {}
+  try { nebulaRefreshPlayerCounts() } catch (e) {}
 }
 
 window.addEventListener("locationchange", nebulaIdleRefresh)

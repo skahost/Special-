@@ -8,6 +8,7 @@ use Illuminate\Contracts\Config\Repository as ConfigRepository;
 use Pterodactyl\Contracts\Repository\SettingsRepositoryInterface;
 use Pterodactyl\Http\Requests\Admin\AdminFormRequest;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Storage;
 
 use Pterodactyl\BlueprintFramework\Libraries\ExtensionLibrary\Admin\BlueprintAdminLibrary as BlueprintExtensionLibrary;
 
@@ -139,6 +140,7 @@ class nebulaExtensionController extends Controller
     $enable_world_manager = $this->blueprint->dbGet('nebula', 'enable_world_manager');
     $enable_world_installer = $this->blueprint->dbGet('nebula', 'enable_world_installer');
     $enable_auto_suspension = $this->blueprint->dbGet('nebula', 'enable_auto_suspension');
+    $enable_player_count = $this->blueprint->dbGet('nebula', 'enable_player_count');
 
     if($init != "{version}") {
       $this->blueprint->dbSet('nebula', 'init', '');
@@ -262,6 +264,7 @@ class nebulaExtensionController extends Controller
     $defaultEnable_world_manager = "0";
     $defaultEnable_world_installer = "0";
     $defaultEnable_auto_suspension = "0";
+    $defaultEnable_player_count = "0";
     
     // APPLY DEFAULT DATABASE VALUES
     if($sidebar_home == "" || $reset == "1") {$this->blueprint->dbSet('nebula', 'sidebar_home', "$defaultSidebar_home");$sidebar_home = $this->blueprint->dbGet('nebula', 'sidebar_home');}
@@ -380,6 +383,7 @@ class nebulaExtensionController extends Controller
     if($enable_world_manager == "" || $reset == "1") {$this->blueprint->dbSet('nebula', 'enable_world_manager', $defaultEnable_world_manager);$enable_world_manager = $this->blueprint->dbGet('nebula', 'enable_world_manager');}
     if($enable_world_installer == "" || $reset == "1") {$this->blueprint->dbSet('nebula', 'enable_world_installer', $defaultEnable_world_installer);$enable_world_installer = $this->blueprint->dbGet('nebula', 'enable_world_installer');}
     if($enable_auto_suspension == "" || $reset == "1") {$this->blueprint->dbSet('nebula', 'enable_auto_suspension', $defaultEnable_auto_suspension);$enable_auto_suspension = $this->blueprint->dbGet('nebula', 'enable_auto_suspension');}
+    if($enable_player_count == "" || $reset == "1") {$this->blueprint->dbSet('nebula', 'enable_player_count', $defaultEnable_player_count);$enable_player_count = $this->blueprint->dbGet('nebula', 'enable_player_count');}
 
     if($reset == "1") { return redirect("/extensions/nebula/editor/edit/more.php?reset=true"); }
     else { return redirect("/extensions/nebula/editor/index.html"); }
@@ -393,6 +397,22 @@ class nebulaExtensionController extends Controller
     foreach ($request->normalize() as $key => $value) {
       $this->settings->set('nebula::' . $key, $value);
     }
+
+    // Optional server-card background image upload. An uploaded file takes
+    // precedence over the URL field so admins can upload instead of pasting a link.
+    if ($request->hasFile('server_card_bg_upload')) {
+      $request->validate([
+        'server_card_bg_upload' => 'image|mimes:png,jpg,jpeg,webp,gif|max:4096',
+      ]);
+      $file = $request->file('server_card_bg_upload');
+      if ($file->isValid()) {
+        $ext = strtolower($file->getClientOriginalExtension() ?: ($file->extension() ?: 'png'));
+        $name = 'card-bg-' . bin2hex(random_bytes(8)) . '.' . $ext;
+        $path = $file->storeAs('nebula', $name, 'public');
+        $this->settings->set('nebula::server_card_bg_image', Storage::disk('public')->url($path));
+      }
+    }
+
     $endpoint = $request->input('_endpoint', '/admin/extensions/nebula');
     return redirect("$endpoint");
   }
@@ -516,6 +536,7 @@ class NebulaSettingsFormRequest extends AdminFormRequest
       'enable_world_manager' => 'boolean',
       'enable_world_installer' => 'boolean',
       'enable_auto_suspension' => 'boolean',
+      'enable_player_count' => 'boolean',
     ];
   }
 
@@ -636,6 +657,7 @@ class NebulaSettingsFormRequest extends AdminFormRequest
       'enable_world_manager' => 'world manager module toggle',
       'enable_world_installer' => 'world installer module toggle',
       'enable_auto_suspension' => 'auto suspension module toggle',
+      'enable_player_count' => 'active player count toggle',
     ];
   }
 }

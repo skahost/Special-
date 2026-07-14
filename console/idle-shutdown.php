@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Nebula — Idle Server Shutdown (Auto-Sleep)
+ * SK Host — Idle Server Shutdown (Auto-Sleep)
  *
  * This file is executed every minute by the Blueprint-generated Artisan command
  * `nebula:idle-shutdown` (see console/Console.yml). Inside this scope the
@@ -10,7 +10,7 @@
  *   - $this      : the Illuminate\Console\Command instance (info()/line()/error())
  *
  * Behaviour:
- *   1. Skip entirely unless `enable_idle_shutdown` is turned on in Nebula Designer.
+ *   1. Skip entirely unless `enable_idle_shutdown` is turned on in SK Host Designer.
  *   2. Look at every active (non-suspended, installed) server that is currently
  *      running on Wings.
  *   3. Skip servers owned by admins (when `exempt_admin_servers` is enabled) and
@@ -147,7 +147,11 @@ if (!function_exists('nebula_idle_player_count')) {
     }
 }
 
-if ((string) $blueprint->dbGet('nebula', 'enable_idle_shutdown') !== '1') {
+$idleEnabled = (string) $blueprint->dbGet('nebula', 'enable_idle_shutdown') === '1';
+$recordPlayers = (string) $blueprint->dbGet('nebula', 'enable_player_count') === '1';
+
+// Nothing to do if neither the auto-sleep nor the player-count feature is on.
+if (!$idleEnabled && !$recordPlayers) {
     return;
 }
 
@@ -171,6 +175,9 @@ if (!is_array($sleeping)) {
     $sleeping = [];
 }
 
+// uuidShort => active player count, refreshed every run and surfaced on the dashboard.
+$players = [];
+
 /** @var DaemonServerRepository $serverRepository */
 $serverRepository = app()->make(DaemonServerRepository::class);
 /** @var DaemonPowerRepository $powerRepository */
@@ -185,28 +192,18 @@ Server::query()
     ->each(function (Server $server) use (
         &$tracking,
         &$sleeping,
+        &$players,
+        $idleEnabled,
+        $recordPlayers,
         $exemptAdmin,
         $exemptEggs,
         $serverRepository,
         $powerRepository,
         $now,
-        $timeout,
-        $blueprint
+        $timeout
     ) {
         // Keyed by the short uuid because that is what the dashboard uses in URLs.
         $uuid = $server->uuidShort;
-
-        if ($exemptAdmin && $server->user && $server->user->root_admin) {
-            unset($tracking[$uuid]);
-
-            return;
-        }
-
-        if (in_array((int) $server->egg_id, $exemptEggs, true)) {
-            unset($tracking[$uuid]);
-
-            return;
-        }
 
         try {
             $details = $serverRepository->setServer($server)->getDetails();
@@ -225,12 +222,34 @@ Server::query()
         // Server is running, so it is definitely awake.
         unset($sleeping[$uuid]);
 
-        $players = nebula_idle_player_count($server);
-        if ($players === null) {
+        // Record the active player count for every running server (Minecraft
+        // Server List Ping); this is independent of the auto-sleep exemptions.
+        $playerCount = nebula_idle_player_count($server);
+        if ($recordPlayers && $playerCount !== null) {
+            $players[$uuid] = $playerCount;
+        }
+
+        if (!$idleEnabled) {
+            return;
+        }
+
+        if ($exemptAdmin && $server->user && $server->user->root_admin) {
+            unset($tracking[$uuid]);
+
+            return;
+        }
+
+        if (in_array((int) $server->egg_id, $exemptEggs, true)) {
+            unset($tracking[$uuid]);
+
+            return;
+        }
+
+        if ($playerCount === null) {
             $cpu = (float) ($details['utilization']['cpu_absolute'] ?? 0.0);
             $empty = $cpu < NEBULA_IDLE_CPU_THRESHOLD;
         } else {
-            $empty = $players === 0;
+            $empty = $playerCount === 0;
         }
 
         if (!$empty) {
@@ -260,3 +279,4 @@ Server::query()
 
 $blueprint->dbSet('nebula', 'idle_tracking', json_encode($tracking));
 $blueprint->dbSet('nebula', 'idle_sleeping', json_encode($sleeping));
+$blueprint->dbSet('nebula', 'player_counts', json_encode($players));

@@ -1,13 +1,13 @@
 info:
-  name: 'Nebula'
+  name: 'SK Host'
   identifier: 'nebula'
   description: 'Pterodactyl takes flight'
   flags: 'developerKeepApplicationCache, developerEscalateExportScript, developerEscalateInstallScript'
   version: '2.2-2'
   target: 'beta-2026-01'
-  author: 'prplwtf'
+  author: 'SK Host'
   icon: 'nebula.jpg'
-  website: 'https://nebula.style'
+  website: 'https://github.com/skahost'
 
 admin:
   view: 'admin/view.blade.php'

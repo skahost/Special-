@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 #
-# Nebula (modified) — one-line installer for Pterodactyl + Blueprint
+# SK Host — one-line installer for Pterodactyl + Blueprint
 # ------------------------------------------------------------------
-# Downloads this repository's main branch, installs/updates the Nebula
+# Downloads this repository's main branch, installs/updates the SK Host
 # Blueprint extension (idle server shutdown, module toggles & UI changes),
 # rebuilds the panel frontend and brings the panel back online.
 #
@@ -97,7 +97,7 @@ fi
 
 # ---- Download --------------------------------------------------------------
 cd "$PANEL_DIR"
-info "Installing the modified Nebula theme into ${PANEL_DIR}"
+info "Installing the modified SK Host theme into ${PANEL_DIR}"
 
 TMP_DIR="$(mktemp -d)"
 info "Downloading ${REPO_OWNER}/${REPO_NAME} (${REPO_BRANCH})..."
@@ -106,13 +106,13 @@ tar -xzf "${TMP_DIR}/repo.tar.gz" -C "$TMP_DIR"
 
 SRC_DIR="$(find "$TMP_DIR" -maxdepth 1 -type d -name "${REPO_NAME}-*" | head -n 1)"
 if [[ -z "$SRC_DIR" || ! -f "${SRC_DIR}/conf.yml" ]]; then
-  error "Downloaded archive does not contain the Nebula source (conf.yml missing)."
+  error "Downloaded archive does not contain the SK Host source (conf.yml missing)."
   exit 1
 fi
 success "Repository downloaded and extracted."
 
 # ---- Package the extension into a .blueprint file --------------------------
-info "Packaging the Nebula extension..."
+info "Packaging the SK Host extension..."
 require_cmd zip
 BLUEPRINT_PACKAGE="${PANEL_DIR}/${EXTENSION_ID}.blueprint"
 ( cd "$SRC_DIR" && zip -qr "$BLUEPRINT_PACKAGE" . -x "install.sh" "README.md" "*.git*" )
@@ -124,10 +124,10 @@ php artisan down
 MAINTENANCE_ON="true"
 
 # ---- Install / update the extension ----------------------------------------
-info "Installing the Nebula extension via Blueprint..."
+info "Installing the SK Host extension via Blueprint..."
 # shellcheck disable=SC2086
 $BLUEPRINT_CMD -install "$EXTENSION_ID"
-success "Blueprint installed the Nebula extension."
+success "Blueprint installed the SK Host extension."
 
 # ---- Frontend build --------------------------------------------------------
 if command -v yarn >/dev/null 2>&1; then
@@ -153,4 +153,4 @@ info "Disabling maintenance mode (php artisan up)..."
 php artisan up
 MAINTENANCE_ON="false"
 
-success "Nebula installed successfully! Open Admin → Extensions → Nebula to configure it."
+success "SK Host installed successfully! Open Admin → Extensions → SK Host to configure it."

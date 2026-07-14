@@ -9,10 +9,10 @@
           <div class="nebula-onboarding-container">
             <p class="nebula-onboarding-icon">
               <i class="bi bi-exclude"></i>
-              <span>Nebula</span>
+              <span>SK Host</span>
             </p>
             <div class="nebula-onboarding-content">
-              <p class="nebula-onboarding-text">Greetings traveler, welcome to <b>Nebula</b>! Get started by <i>customizing</i> your Pterodactyl appearance in <b>Nebula Designer</b>.</p>
+              <p class="nebula-onboarding-text">Greetings traveler, welcome to <b>SK Host</b>! Get started by <i>customizing</i> your Pterodactyl appearance in <b>SK Host Designer</b>.</p>
               <p align="center"><a href="/admin/extensions/nebula"><button type="button" class="nebula-onboarding-button">Get started <i class="bi bi-arrow-right"></i></button></a></p>
             </div>
           </div>
@@ -21,7 +21,7 @@
     @else
       <div class="init-error-bg">
         <div class="init-error-overlay">
-          <p>You do not have administrator permissions on this panel and are thus unable to configure Nebula. Please wait for an administrator to configure Nebula for you to be able to manage your servers again.</p>
+          <p>You do not have administrator permissions on this panel and are thus unable to configure SK Host. Please wait for an administrator to configure SK Host for you to be able to manage your servers again.</p>
         </div>
       </div>
     @endif
