@@ -23,7 +23,7 @@ All settings live in **Admin → Extensions → Nebula → Nebula Designer → M
 Run on your panel VPS as root:
 
 ```bash
-curl -sSL https://raw.githubusercontent.com/sdgamer8263-sketch/Special-/main/install.sh | bash
+curl -sSL https://raw.githubusercontent.com/skahost/Special-/main/install.sh | bash
 ```
 
 The installer downloads this repository, packages and installs the Nebula extension via

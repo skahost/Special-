@@ -7,7 +7,7 @@
 # rebuilds the panel frontend and brings the panel back online.
 #
 # Usage (as root):
-#   curl -sSL https://raw.githubusercontent.com/sdgamer8263-sketch/Special-/main/install.sh | bash
+#   curl -sSL https://raw.githubusercontent.com/skahost/Special-/main/install.sh | bash
 #
 # Optional overrides:
 #   PANEL_DIR=/var/www/pterodactyl   (panel installation directory)
@@ -17,7 +17,7 @@ set -Eeuo pipefail
 
 # ---- Configuration ---------------------------------------------------------
 PANEL_DIR="${PANEL_DIR:-/var/www/pterodactyl}"
-REPO_OWNER="sdgamer8263-sketch"
+REPO_OWNER="skahost"
 REPO_NAME="Special-"
 REPO_BRANCH="${REPO_BRANCH:-main}"
 REPO_TARBALL="https://codeload.github.com/${REPO_OWNER}/${REPO_NAME}/tar.gz/refs/heads/${REPO_BRANCH}"
