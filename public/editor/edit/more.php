@@ -127,6 +127,7 @@
       'enable_world_manager',
       'enable_world_installer',
       'enable_auto_suspension',
+      'enable_player_count',
   ]);
 
 ?>
@@ -147,10 +148,10 @@
     .nebula-module-grid .nebula-toggle-row { display:flex; align-items:center; justify-content:space-between; padding:6px 0; }
     .nebula-module-grid .nebula-toggle-row span { font-size:13px; color:#c9c9d6; }
   </style>
-  <title>Nebula Designer</title>
+  <title>SK Host Designer</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="/extensions/nebula/editor/assets/favicon.ico">
-  <?php if($blueprint->dbGet("nebula", "plausible_tracking") == 1) { echo('<script defer="" data-domain="demo.nebula.style" src="https://plausible.prpl.wtf/js/script.js"></script>'); } ?>
+  <?php /* SK Host: analytics removed */ ?>
 </head>
 
 <html style="background-color: #050404">
@@ -169,7 +170,7 @@
         <button onclick="saveAction()" class="save-button"><i class="bi bi-floppy-fill"></i></button>
       </div>
       <div class="editor fade">
-        <form action="/admin/extensions/nebula" method="POST" id="editor-form" autocomplete="off">
+        <form action="/admin/extensions/nebula" method="POST" id="editor-form" autocomplete="off" enctype="multipart/form-data">
           <div class="editor-container">
             <h2 class="editor-title">Miscellaneous</h2>
             <p class="editor-description">Uncategorized and advanced features.</p>
@@ -242,12 +243,25 @@
               <label for="kill-off" class="nebula-toggle-pill">Disabled</label>
               <p class="option-footer">Adds a red "Kill" button next to Start/Stop/Restart for forced termination.</p>
 
+              <p class="option-title" style="margin-top:14px;">Active player count on cards</p>
+              <input type="radio" id="playercount-on" name="enable_player_count" value="1" class="hidden nebula-toggle-radio" <?php if($blueprint->dbGet("nebula", "enable_player_count") == "1") { echo("checked=''"); } ?>>
+              <label for="playercount-on" class="nebula-toggle-pill">Enabled</label>
+              <input type="radio" id="playercount-off" name="enable_player_count" value="0" class="hidden nebula-toggle-radio" <?php if($blueprint->dbGet("nebula", "enable_player_count") != "1") { echo("checked=''"); } ?>>
+              <label for="playercount-off" class="nebula-toggle-pill">Disabled</label>
+              <p class="option-footer">Shows the live player count (Minecraft) below each dashboard server card. Refreshed every minute by the scheduled task.</p>
+
               <div class="option-container with-margin">
                 <span class="option-icon"><i class="bi bi-image"></i></span>
                 <input type="text" id="card-bg" name="server_card_bg_image" class="option-input with-icon" placeholder="https://example.com/card-background.png" value="<?php echo $blueprint->dbGet("nebula", "server_card_bg_image"); ?>">
                 <script> tippy('.option-container:has(.option-icon + #card-bg)', { content: "Server card background image URL", arrow: false, animation: 'shift-away' }); </script>
               </div>
-              <p class="option-footer">Optional background image applied to dashboard server cards.</p>
+              <p class="option-footer">Optional background image applied to dashboard server cards. Paste a URL above, or upload an image below.</p>
+
+              <div class="option-container with-margin">
+                <span class="option-icon"><i class="bi bi-upload"></i></span>
+                <input type="file" id="card-bg-upload" name="server_card_bg_upload" class="option-input with-icon" accept="image/png,image/jpeg,image/webp,image/gif">
+              </div>
+              <p class="option-footer">Upload an image (PNG, JPG, WEBP or GIF, max 4&nbsp;MB). An uploaded file replaces the URL above.</p>
             </div>
 
             <!-- Modules -->
@@ -286,7 +300,7 @@
             <!-- Configuration Import/Export -->
             <div class="option">
               <p class="option-title">Import/Export settings</p>
-              <p class="option-footer">Here you can export your Nebula configuration to a ".nebulaconfig" file.</p>
+              <p class="option-footer">Here you can export your SK Host configuration to a ".nebulaconfig" file.</p>
               <button class="notif-button notif-primary" type="button" onclick="document.getElementById('importConfigFile').click()" type="button">Import configuration</button>
               <input type="file" id="importConfigFile" style="display: none;" accept=".nebulaconfig" onchange="importConfig(event)">
               <button class="notif-button" type="button" onclick="downloadConfig()" type="button">Export configuration</button>
@@ -326,7 +340,7 @@
         <div class="notif-container">
           <h2 class="notif-title">
             <i class="bi bi-trash3-fill" style="margin-right: 4px;"></i>
-            Reset Nebula
+            Reset SK Host
           </h2>
           <p class="notif-text">Restore all of your changes to factory settings, this cannot be undone.</p>
           <button class="notif-button notif-danger" id="reset-confirm" onclick="factoryReset()" type="button">Reset</button>
@@ -340,7 +354,7 @@
             <i class="bi bi-check-circle-fill" style="margin-right: 4px;"></i>
             Reset complete
           </h2>
-          <p class="notif-text">Successfully restored Nebula's configuration to factory defaults.</p>
+          <p class="notif-text">Successfully restored SK Host's configuration to factory defaults.</p>
           <button class="button-close notif-button" type="button">Dismiss</button>
         </div>
       </div>

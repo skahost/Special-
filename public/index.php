@@ -11,10 +11,10 @@
     <script>
       HandleNebulaError(`
         <code>${window.location.hostname}</code>
-        utilizes Nebula to bring users an optimal experience.
+        utilizes SK Host to bring users an optimal experience.
         This page contains information that might be useful for
         debugging certain problems administrators might encounter
-        with modifications such as Nebula.
+        with modifications such as SK Host.
 
         <div style="
           background-color: #241e2f;

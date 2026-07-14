@@ -17,10 +17,12 @@
   @if($n_alert == "1")<script src="/extensions/nebula/libraries/assets/marked.min.js?{timestamp}"></script>@endif
   <script src="/extensions/nebula/libraries/assets/popper.min.js?{timestamp}"></script>
   <script src="/extensions/nebula/libraries/assets/tippy-bundle.umd.min.js?{timestamp}"></script>
-  <!-- Nebula custom additions: shared client config -->
+  <!-- SK Host custom additions: shared client config -->
   <?php
     $__nebula_sleeping = json_decode($n_idle_sleeping ?? '', true);
     if(!is_array($__nebula_sleeping)) { $__nebula_sleeping = []; }
+    $__nebula_players = json_decode($n_player_counts ?? '', true);
+    if(!is_array($__nebula_players)) { $__nebula_players = []; }
   ?>
   <script>
     window.NebulaConfig = {
@@ -28,6 +30,10 @@
         enabled: @json($n_enable_idle_shutdown == "1"),
         timeoutMinutes: {{ (int) ($n_idle_timeout_minutes ?: 10) }},
         sleeping: @json(array_keys($__nebula_sleeping)),
+      },
+      players: {
+        enabled: @json($n_enable_player_count == "1"),
+        counts: @json((object) $__nebula_players),
       },
       ui: {
         removeFooter: @json($n_remove_footer == "1"),
@@ -57,8 +63,7 @@
 <script src="/extensions/nebula/libraries/errorHandler.js?{timestamp}"></script>
 <script src="/extensions/nebula/libraries/locationchange.js?{timestamp}"></script>
 <?php
-  // This is here to simplify setting up the Nebula demo panel. If you'd like to remove it, go ahead.
-  if($blueprint->dbGet("nebula", "plausible_tracking") == 1) { echo('<script defer="" data-domain="demo.nebula.style" src="https://plausible.prpl.wtf/js/script.js"></script>'); }
+  // SK Host: third-party analytics phone-home removed.
 ?>
 
 <!-- Import stylesheets. -->
@@ -126,8 +131,8 @@
   <?php
     /* Icon theme imports
     *
-    * Nebula fetches icon themes from multiple sources: cdn.nebula.style and private.nebula.style.
-    * "private.nebula.style" is only used for assets we ("Emma (prpl.wtf)") had to purchase a commercial license for.
+    * SK Host fetches icon-theme webfonts from a CDN. These are third-party
+    * icon packs (Bootstrap Icons, Lucide, etc.) served as static font assets.
     */
   ?>
   @import url("https://cdn.nebula.style/icons/bootstrap/bootstrap-icons.css");

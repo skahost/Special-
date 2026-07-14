@@ -37,7 +37,7 @@
 
   document.addEventListener("DOMContentLoaded", function () {
     console.log(
-      "\n%cPowered by Nebula - © 2023-2026 Emma (prpl.wtf)\n%c\nLearn more at https://nebula.style \nBuyer agreements available at https://cdn.nebula.style/etc/policies/\n\n",
+      "\n%cPowered by SK Host\n%c\n\n",
 
       'font-weight: 900; font-size: 24px; color: #7a98ff;',
       'font-weight: 900; color: #ffffff;'

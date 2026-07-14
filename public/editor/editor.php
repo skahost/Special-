@@ -21,10 +21,9 @@
   <!-- tippy.js --> <script src="https://unpkg.com/tippy.js@6"></script>
   <!-- tippy.js --> <link rel="stylesheet" href="https://unpkg.com/tippy.js@6/animations/shift-away.css">
   <style>.match-dashboard-bg {background-color: <?php echo $blueprint->dbGet("nebula", "palette_dashboard_7"); ?> !important;} .match-auth-bg {background-color: <?php echo $blueprint->dbGet("nebula", "palette_auth_1"); ?> !important;}</style>
-  <title>Nebula Designer</title>
+  <title>SK Host Designer</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="/extensions/nebula/editor/assets/favicon.ico">
-  <?php if($blueprint->dbGet("nebula", "plausible_tracking") == 1) { echo('<script defer="" data-domain="demo.nebula.style" src="https://plausible.prpl.wtf/js/script.js"></script>'); } ?>
 </head>
 
 <html style="background-color: #050404">
@@ -126,7 +125,7 @@
               <!-- GitHub Profile/Repository -->
               <div class="option-container with-margin">
                 <span class="option-icon"><i class="bi bi-github"></i></span>
-                <input type="text" id="weblink-social-github" name="weblink_social_github" class="option-input with-icon" placeholder="prplwtf" value="<?php echo $blueprint->dbGet("nebula", "weblink_social_github"); ?>">
+                <input type="text" id="weblink-social-github" name="weblink_social_github" class="option-input with-icon" placeholder="skahost" value="<?php echo $blueprint->dbGet("nebula", "weblink_social_github"); ?>">
                 <script> tippy('.option-container:has(.option-icon + #weblink-social-github)', { content: "Github Profile/Repository", arrow: false, animation: 'shift-away' }); </script>
               </div>
               <p class="option-footer">Invite links or usernames to various social platforms.</p>

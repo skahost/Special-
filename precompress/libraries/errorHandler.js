@@ -1,5 +1,5 @@
 /* © 2023-2026 Emma (prpl.wtf) */
-console.log('nebula#~ errorHandler.js');
+console.log('skhost#~ errorHandler.js');
 
 function HandleNebulaError(error, reference) {
   let PTERODACTYL_APP = document.getElementById('app');
@@ -25,7 +25,7 @@ function HandleNebulaError(error, reference) {
         font-family: 'Inter', sans-serif;
         overflow-y: scroll;
       ">
-        <img src="{webroot/public}/libraries/assets/emma.png" height="45.1333" style="padding-bottom: 12px"/>
+        <p style="font-size: 22px; font-weight: 600; padding-bottom: 12px; margin: 0">SK Host</p>
         <p style="max-width: 750px">
           ${error}
         </p>
@@ -40,9 +40,9 @@ function HandleNebulaError(error, reference) {
         font-family: 'Inter', sans-serif;
       ">
         <p style="margin: 0px">
-          <a href="https://github.com/prplwtf/nebula/issues/new" style="color: #7997ff">Feedback</a>
+          <a href="https://github.com/skahost/Special-/issues/new" style="color: #7997ff">Feedback</a>
           <i class="bi bi-dot"></i>
-          <a href="https://nebula.style" style="color: #7997ff">Nebula</a>
+          <span style="color: #7997ff">SK Host</span>
         </p>
       </div>
 
@@ -78,7 +78,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
     HandleNebulaError(
       `
-      Nebula was unable to initialize because it couldn't access the
+      SK Host was unable to initialize because it couldn't access the
       <code>app</code>
       node.
       This usually indicates a failed webpack build and is usually
@@ -92,7 +92,7 @@ window.addEventListener('DOMContentLoaded', () => {
       <br/><br/>
 
       Please note that this error is commonly
-      <b>not caused by Nebula</b>
+      <b>not caused by SK Host</b>
       due to the theme being a shell around Pterodactyl and doesn't
       modify any part of it's bundle, hence why we're able to show
       this error to you.

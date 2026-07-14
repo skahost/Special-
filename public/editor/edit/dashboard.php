@@ -21,10 +21,10 @@
   <!-- tippy.js --> <link rel="stylesheet" href="https://unpkg.com/tippy.js@6/animations/shift-away.css">
   <!-- patterns --> <link rel="stylesheet" href="{webroot/public}/libraries/patterns.css">
   <style>.match-dashboard-bg {background-color: <?php echo $blueprint->dbGet("nebula", "palette_dashboard_7"); ?> !important;} .match-auth-bg {background-color: <?php echo $blueprint->dbGet("nebula", "palette_auth_1"); ?> !important;}</style>
-  <title>Nebula Designer</title>
+  <title>SK Host Designer</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="/extensions/nebula/editor/assets/favicon.ico">
-  <?php if($blueprint->dbGet("nebula", "plausible_tracking") == 1) { echo('<script defer="" data-domain="demo.nebula.style" src="https://plausible.prpl.wtf/js/script.js"></script>'); } ?>
+  <?php /* SK Host: analytics removed */ ?>
 </head>
 
 <html style="background-color: #050404">
@@ -127,7 +127,7 @@
               <label for="keybinds-off" class="option-radio">
                 <img src="../assets/images/dashboard/keybinds/off.png" loading="lazy" class="aspect-16:9"/>
               </label>
-              <p class="option-footer">Enable or disable the keybinds feature in Nebula.</p>
+              <p class="option-footer">Enable or disable the keybinds feature in SK Host.</p>
             </div>
 
             <!-- Graphs -->
@@ -175,7 +175,7 @@
               <label for="watermark-off" class="option-radio">
                 <img src="../assets/images/dashboard/watermark/off.png" loading="lazy" class="aspect-16:9"/>
               </label>
-              <p class="option-footer">Choose to show or hide the Nebula footer on the Pterodactyl dashboard.</p>
+              <p class="option-footer">Choose to show or hide the footer on the Pterodactyl dashboard.</p>
             </div>
 
             <!-- Border radius -->

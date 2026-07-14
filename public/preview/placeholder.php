@@ -29,16 +29,16 @@
 
             if($hint == 1) {
               $hint_icon = "bi-stars";
-              $hint_text = "<b>Enjoying Nebula so far?</b> We'd love to hear your experience through <b>submitting a review</b> on <a href='https://builtbybit.com/resources/nebula.32442/reviews?ref=449337' target='_blank'>BuiltByBit</a> or <a href='https://www.sourcexchange.net/products/nebula#reviews' target='_blank'>sourceXchange</a>.";
+              $hint_text = "<b>Enjoying SK Host so far?</b> Customize every part of your panel's appearance from this designer.";
             } else if($hint == 2) {
               $hint_icon = "bi-puzzle-fill";
-              $hint_text = "Nebula works with most of your <b>favorite extensions</b>. Expand your panel's functionality by stocking up on some new extensions <a href='https://blueprint.zip/browse' target='_blank'>here</a>.";
+              $hint_text = "SK Host works with most of your <b>favorite extensions</b>. Expand your panel's functionality by stocking up on some new extensions <a href='https://blueprint.zip/browse' target='_blank'>here</a>.";
             } else if($hint == 3) {
               $hint_icon = "bi-chat-left-quote-fill";
-              $hint_text = "<b>Suggest new features</b>, report bugs and provide feedback to help Nebula improve even further on our <a href='https://github.com/prplwtf/nebula/issues/new' target='_blank'>GitHub repository</a>.";
+              $hint_text = "<b>Suggest new features</b>, report bugs and provide feedback to help SK Host improve even further on our <a href='https://github.com/skahost/Special-/issues/new' target='_blank'>GitHub repository</a>.";
             } else if($hint == 4) {
               $hint_icon = "bi-palette2";
-              $hint_text = "<b>Customize your color palette</b> and set your panel apart from others. Preview your colors live in Nebula's <a href='/extensions/nebula/editor/edit/palette.php' target='_blank'>palette editor</a>.";
+              $hint_text = "<b>Customize your color palette</b> and set your panel apart from others. Preview your colors live in SK Host's <a href='/extensions/nebula/editor/edit/palette.php' target='_blank'>palette editor</a>.";
             } else if($hint == 5) {
               $hint_icon = "bi-plus-square-fill";
               $hint_text = "<b>Effortlessly customize your settings</b> by clicking the <b>plus button</b> next to the configuration options for a complete personalization experience.";
@@ -64,7 +64,7 @@
         </p>
       </div>
       <div class="footer">
-        <p style="text-align:center"><a href="https://github.com/prplwtf/nebula/issues/new" target="_blank">
+        <p style="text-align:center"><a href="https://github.com/skahost/Special-/issues/new" target="_blank">
           <button class="bug-btn"><i class="bi bi-chat-left-fill" style="margin-right:3px"></i> Feedback</button>
         </a></p>
       </div>

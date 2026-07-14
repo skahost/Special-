@@ -70,7 +70,7 @@
       </code>
     </p></div>
 
-    <div class="keybinds-column"><p class="keybinds-content-text-dim keybinds-subcategory-name">Open Nebula Designer</p></div>
+    <div class="keybinds-column"><p class="keybinds-content-text-dim keybinds-subcategory-name">Open SK Host Designer</p></div>
     <div class="keybinds-column"><p class="keybinds-content-text-dim">
       <code class="keybinds-subcategory-shortcut">
         {!! $KEY_CTRL !!} D

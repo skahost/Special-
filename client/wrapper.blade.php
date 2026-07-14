@@ -100,6 +100,8 @@
     'idle_timeout_minutes',
     'exempt_admin_servers',
     'idle_sleeping',
+    'player_counts',
+    'enable_player_count',
     'remove_footer',
     'sidebar_extensions_list',
     'console_kill_button',
@@ -217,6 +219,8 @@
   $n_idle_timeout_minutes = $nebula_data['idle_timeout_minutes'];
   $n_exempt_admin_servers = $nebula_data['exempt_admin_servers'];
   $n_idle_sleeping = $nebula_data['idle_sleeping'];
+  $n_player_counts = $nebula_data['player_counts'];
+  $n_enable_player_count = $nebula_data['enable_player_count'];
   $n_remove_footer = $nebula_data['remove_footer'];
   $n_sidebar_extensions_list = $nebula_data['sidebar_extensions_list'];
   $n_console_kill_button = $nebula_data['console_kill_button'];
@@ -244,7 +248,7 @@
 
 @if(Auth::check())
 @if($n_watermark == "1")
-<p class="nebulaFooter"><i style="font-size:12px; margin-right: 3px;" class="bi bi-exclude"></i> <a href="https://nebula.style?utm_source=inlinenebula&utm_campaign=footer" target="_blank">Nebula theme</a> by <a href="https://prpl.wtf?utm_source=inlinenebula&utm_campaign=footer" target="_blank">Emma (prpl.wtf)</a></p>
+<p class="nebulaFooter"><i style="font-size:12px; margin-right: 3px;" class="bi bi-exclude"></i> SK Host</p>
 @endif
 <div
   <?php
@@ -1069,7 +1073,7 @@
   ></div>
   <div class="nebula-auth-backdrop"></div>
   @if($n_watermark_auth != "0")
-    <div class="nebula-watermark"><a href="https://nebula.style?utm_source=inlinenebula&utm_campaign=footer"><b class="watermark-highlight"><i class="bi bi-exclude"></i> Nebula</b> theme</a> by <a class="nebula-watermark-text" href="https://prpl.wtf?utm_source=inlinenebula&utm_campaign=footer" target="_blank">Emma (prpl.wtf)</a></div>
+    <div class="nebula-watermark"><b class="watermark-highlight"><i class="bi bi-exclude"></i> SK Host</b></div>
   @endif
   <style>.g-recaptcha {display: none !important;}</style>
   @if($blueprint->dbGet("settings", "recaptcha:enabled") == "true")

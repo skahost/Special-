@@ -53,7 +53,7 @@
     '); }
 
     if($blueprint->dbGet("nebula", "watermark_auth") != "0") {
-      echo ('<div class="nebula-watermark"><a class="nebula-watermark-text no-underline" href="https://nebula.style?utm_source=inlinenebula&utm_campaign=footer"><b class="watermark-highlight"><i class="bi bi-exclude"></i> Nebula</b> theme</a> by <a class="nebula-watermark-text" href="https://prpl.wtf?utm_source=inlinenebula&utm_campaign=footer" target="_blank">Emma (prpl.wtf)</a></div>');
+      echo ('<div class="nebula-watermark"><b class="watermark-highlight"><i class="bi bi-exclude"></i> SK Host</b></div>');
     }
     ?>
   </body>

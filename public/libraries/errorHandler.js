@@ -1,4 +1,9 @@
-function HandleNebulaError(e,t){return document.getElementById("app").innerHTML=`
+/* © 2023-2026 Emma (prpl.wtf) */
+console.log('skhost#~ errorHandler.js');
+
+function HandleNebulaError(error, reference) {
+  let PTERODACTYL_APP = document.getElementById('app');
+  return (PTERODACTYL_APP.innerHTML = `
     <style>
       @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
     </style>
@@ -20,9 +25,9 @@ function HandleNebulaError(e,t){return document.getElementById("app").innerHTML=
         font-family: 'Inter', sans-serif;
         overflow-y: scroll;
       ">
-        <img src="{webroot/public}/libraries/assets/emma.png" height="45.1333" style="padding-bottom: 12px"/>
+        <p style="font-size: 22px; font-weight: 600; padding-bottom: 12px; margin: 0">SK Host</p>
         <p style="max-width: 750px">
-          ${e}
+          ${error}
         </p>
       </div>
 
@@ -35,9 +40,9 @@ function HandleNebulaError(e,t){return document.getElementById("app").innerHTML=
         font-family: 'Inter', sans-serif;
       ">
         <p style="margin: 0px">
-          <a href="https://github.com/prplwtf/nebula/issues/new" style="color: #7997ff">Feedback</a>
+          <a href="https://github.com/skahost/Special-/issues/new" style="color: #7997ff">Feedback</a>
           <i class="bi bi-dot"></i>
-          <a href="https://nebula.style" style="color: #7997ff">Nebula</a>
+          <span style="color: #7997ff">SK Host</span>
         </p>
       </div>
 
@@ -50,12 +55,30 @@ function HandleNebulaError(e,t){return document.getElementById("app").innerHTML=
         font-family: 'Inter', sans-serif;
       ">
         <p style="margin: 0px">
-          <code>( ._.) ${t||""}</code>
+          <code>( ._.) ${reference || ''}</code>
         </p>
       </div>
     </div>
-  `}console.log("nebula#~ errorHandler.js"),window.addEventListener("DOMContentLoaded",()=>{document.getElementById("app").innerHTML||(document.querySelector(".initialize-notif")&&document.querySelector(".initialize-notif").remove(),document.querySelector(".init-error-bg")&&document.querySelector(".init-error-bg").remove(),document.querySelector(".init-error-style")&&document.querySelector(".init-error-style").remove(),HandleNebulaError(`
-      Nebula was unable to initialize because it couldn't access the
+  `);
+}
+
+// failed build
+window.addEventListener('DOMContentLoaded', () => {
+  let PTERODACTYL_APP = document.getElementById('app');
+  if (!PTERODACTYL_APP.innerHTML) {
+    if (document.querySelector('.initialize-notif')) {
+      document.querySelector('.initialize-notif').remove();
+    }
+    if (document.querySelector('.init-error-bg')) {
+      document.querySelector('.init-error-bg').remove();
+    }
+    if (document.querySelector('.init-error-style')) {
+      document.querySelector('.init-error-style').remove();
+    }
+
+    HandleNebulaError(
+      `
+      SK Host was unable to initialize because it couldn't access the
       <code>app</code>
       node.
       This usually indicates a failed webpack build and is usually
@@ -69,8 +92,12 @@ function HandleNebulaError(e,t){return document.getElementById("app").innerHTML=
       <br/><br/>
 
       Please note that this error is commonly
-      <b>not caused by Nebula</b>
+      <b>not caused by SK Host</b>
       due to the theme being a shell around Pterodactyl and doesn't
       modify any part of it's bundle, hence why we're able to show
       this error to you.
-    `,"INITIALIZATION_FAILED"))});
+    `,
+      'INITIALIZATION_FAILED'
+    );
+  }
+});
