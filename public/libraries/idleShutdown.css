@@ -1,0 +1,51 @@
+/* Nebula custom addition: Idle Server Shutdown (Auto-Sleep) — styling */
+
+a[href^="/server/"][nebula-sleeping="true"] {
+  position: relative;
+}
+
+a[href^="/server/"][nebula-sleeping="true"]::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  box-shadow: inset 0 0 0 2px rgba(109, 94, 252, 0.6);
+  pointer-events: none;
+}
+
+.nebula-sleep-badge {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 5;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #ffffff;
+  background: linear-gradient(135deg, #6d5efc, #4f7cff);
+  box-shadow: 0 2px 8px rgba(79, 124, 255, 0.4);
+}
+
+.nebula-sleep-banner {
+  margin: 12px auto;
+  max-width: 1200px;
+  width: calc(100% - 2rem);
+  padding: 12px 16px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: #cdd3ff;
+  background: linear-gradient(135deg, rgba(109, 94, 252, 0.18), rgba(79, 124, 255, 0.18));
+  border: 1px solid rgba(109, 94, 252, 0.5);
+}
+
+.nebula-sleep-banner-icon {
+  font-size: 18px;
+  line-height: 1;
+}

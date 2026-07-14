@@ -1,0 +1,25 @@
+/* Nebula custom addition: server card custom background image */
+
+.ServerRow__StatusIndicatorBox-sc-1ibsw91-2,
+a[href^="/server/"] > div,
+a[href^="/server/"] {
+  background-image: var(--nebula-card-bg) !important;
+  background-size: cover !important;
+  background-position: center !important;
+  background-repeat: no-repeat !important;
+}
+
+/* Improve readability of stats/text on top of a background image. */
+a[href^="/server/"] {
+  position: relative;
+}
+
+a[href^="/server/"]::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(180deg, rgba(10, 10, 16, 0.35), rgba(10, 10, 16, 0.75));
+  pointer-events: none;
+  z-index: 0;
+}

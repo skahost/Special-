@@ -1,0 +1,11 @@
+/* © 2023-2026 Emma (prpl.wtf) */
+/* FIX UNCENTERED MODALS */
+@media screen and (min-width: 48em) {.kKspuO {margin-top: 5% !important}}
+
+/* FIX NETWORK PRIMARY BUTTON */
+@media (min-width: 768px) {
+  .flex.justify-end.space-x-4.mt-4.w-full.md\:mt-0.md\:w-48 {
+    width: auto !important;
+    margin-left: 1rem !important;
+  }
+}

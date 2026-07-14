@@ -1,0 +1,91 @@
+/* Nebula custom addition: modules, kill button & sidebar tweaks — styling */
+
+/* Kill button (red, forced termination) */
+.nebula-kill-button {
+  background: linear-gradient(135deg, #e53935, #b71c1c) !important;
+  border-color: #b71c1c !important;
+  color: #ffffff !important;
+  margin-left: 8px !important;
+}
+
+.nebula-kill-button:hover {
+  filter: brightness(1.08);
+}
+
+/* Permanent EXTENSIONS sidebar list */
+#SubNavigation {
+  overflow-y: auto;
+}
+
+.nebula-ext-header {
+  width: 100%;
+  margin-top: 10px;
+  padding: 6px 4px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  opacity: 0.55;
+}
+
+.nebula-module-tab {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.nebula-module-tab i {
+  font-size: 15px;
+}
+
+/* Module placeholder view */
+.nebula-module-view {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(3px);
+}
+
+.nebula-module-card {
+  width: min(480px, calc(100% - 2rem));
+  padding: 22px;
+  border-radius: 12px;
+  background: var(--pageSecondary, #1a1a24);
+  border: 1px solid rgba(109, 94, 252, 0.4);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.45);
+  color: #e7e7ef;
+}
+
+.nebula-module-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.nebula-module-head i {
+  color: #6d5efc;
+  font-size: 20px;
+}
+
+.nebula-module-body {
+  font-size: 14px;
+  line-height: 1.5;
+  opacity: 0.85;
+  margin-bottom: 18px;
+}
+
+.nebula-module-close {
+  padding: 8px 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  color: #fff;
+  font-weight: 600;
+  background: linear-gradient(135deg, #6d5efc, #4f7cff);
+}

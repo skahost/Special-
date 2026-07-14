@@ -1,0 +1,12 @@
+/* © 2023-2026 Emma (prpl.wtf) */
+
+.SocialLogin\:container {
+  margin: 0px !important;
+  margin-bottom: 25px !important;
+  padding: 0px !important;
+  background-color: unset !important;
+  box-shadow: unset !important;
+}
+
+.style-module_Yp7-2Fw- { --thisButtonColor: var(--authC) !important; }
+.style-module_Yp7-2Fw-:hover { --thisButtonColor: var(--authD) !important; }
