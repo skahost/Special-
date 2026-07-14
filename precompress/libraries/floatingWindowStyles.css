@@ -1,0 +1,94 @@
+/* © 2023-2026 Emma (prpl.wtf) */
+
+.ContentContainer-sc-x3r2dw-0,
+.ContentContainer-sc-x3r2dw-0 .UibaA,
+.AccountSSHContainer___StyledDiv-sc-yksipt-0,
+.AccountApiContainer___StyledDiv-sc-1c4s3nm-0 {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+html {
+  overflow-x: hidden !important;
+  background: unset !important;
+  background-color: unset !important;
+}
+
+#sidebar,
+#nebula-mobile-navigation,
+.nebula-mobile-overlay,
+.nebula-mobile-nav,
+p.nebulaFooter,
+a.nebulaFooter,
+.PageContentBlock___StyledP-sc-kbxq2g-3 {
+  display: none !important;
+  width: 0px !important;
+  height: 0px !important;
+}
+
+body {
+  padding-left: 0px !important;
+}
+
+.ContentContainer-sc-x3r2dw-0 {
+  height: min-content !important;
+  margin-left: 1rem !important;
+  margin-right: 1rem !important;
+  max-width: unset !important;
+}
+
+
+/* file manager */
+#fileMode {
+  display: none !important;
+}
+div.pointer-events-none.fixed.bottom-0.mb-6.flex.justify-center.w-full.z-50:has(.ipOPTy) {
+  bottom: 0px !important;
+  margin-bottom: 20px !important;
+  margin-top: 0px !important;
+  top: unset !important;
+  right: 20px !important;
+}
+
+
+/* edit files */
+.CodemirrorEditor__EditorContainer-sc-1dzlt6m-0 {
+  min-height: unset !important;
+  height: calc(100vh - 20px - 44px - 50px) !important;
+}
+.FileEditContainer___StyledDiv4-sc-48rzpu-8 {
+  position: fixed;
+  width: calc(100% - 2rem);
+}
+
+/* transparency */
+.fixed-background {
+  display: none;
+  background: unset !important;
+}
+html,
+body,
+[class*="magic-pattern"][view="dashboard"] {
+  background: unset !important;
+}
+
+
+/* progress bar */
+.CbttB {
+  top: calc(100% - 2px) !important;
+}
+
+
+/* alerts and social links */
+.nebula-alert, .nebula-weblinks {
+  display: none !important;
+}
+
+
+/* pagination */
+div.Pagination___StyledDiv-sc-7j9cqz-1 {
+  bottom: 40px !important;
+  width: 100vw !important;
+  left: 0px !important;
+  right: unset !important;
+}
