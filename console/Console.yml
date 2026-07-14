@@ -1,5 +1,4 @@
-Console:
-  - Signature: 'idle-shutdown'
-    Description: 'Stops idle (empty) servers based on Nebula auto-sleep settings and records a sleeping state for the dashboard.'
-    Path: 'idle-shutdown.php'
-    Interval: 'everyMinute'
+- Signature: 'idle-shutdown'
+  Description: 'Stops idle (empty) servers based on Nebula auto-sleep settings and records a sleeping state for the dashboard.'
+  Path: 'idle-shutdown.php'
+  Interval: 'everyMinute'
